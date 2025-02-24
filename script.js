@@ -88,25 +88,19 @@ async function populateAnswers(flag) {
             while (!valid)
             {
                 let index = Math.floor(Math.random() * 251);
-            for (var d in data) {
-                if (count == index) {
-                    flagText = data[d];
-                    break;
+                for (var d in data) {
+                    if (count == index) {
+                        flagText = data[d];
+                        break;
+                    }
+                    count++;
                 }
-                count++;
-            }
-            if (!answerList.includes(d))
-            {
-                valid = true;
-                answerList.push(d);
-            }
-            }
-            let index = Math.floor(Math.random() * 251);
-            for (var d in data) {
-                if (count == index) {
-                    flagText = data[d];
+                if (!answerList.includes(d))
+                {
+                    valid = true;
+                    answerList.push(d);
+                    console.log(answerList);
                 }
-                count++;
             }
             answerButton[i].correctIndex = correctAnswer;
             answerButton[i].addEventListener("click", incorrectAnswerClick);
