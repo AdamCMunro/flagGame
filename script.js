@@ -69,6 +69,8 @@ function getFlagFromIndex(data, index) {
 async function populateAnswers(flag) {
     const data = await fetchJSONData();
     console.log(flag);
+    answerList = [];
+    answerList.push(flag);
     correctAnswer = Math.floor(Math.random() * 4);
     let flagText = "";
     for (let i = 0; i < 4; i++)
@@ -82,6 +84,23 @@ async function populateAnswers(flag) {
         else 
         {
             let count = 0;
+            let valid = false;
+            while (!valid)
+            {
+                let index = Math.floor(Math.random() * 251);
+            for (var d in data) {
+                if (count == index) {
+                    flagText = data[d];
+                    break;
+                }
+                count++;
+            }
+            if (!answerList.includes(d))
+            {
+                valid = true;
+                answerList.push(d);
+            }
+            }
             let index = Math.floor(Math.random() * 251);
             for (var d in data) {
                 if (count == index) {
@@ -111,9 +130,9 @@ function resizeText(text, h1) {
     {
         h1.style.fontSize = (text.length)/1.5 + "pt"
     }
-    else if (text.length > 15)
+    else if (text.length > 18)
     {
-        h1.style.fontSize = (text.length)/1.25 + "pt"
+        h1.style.fontSize = (text.length)/1.2 + "pt"
     }
 }
 
@@ -158,11 +177,11 @@ function removeAnswerButtonEventListeners(button)
 }
 
 function answerButtonMouseOver(evt) {
-    evt.currentTarget.style.backgroundColor = '#eaeee8';
+    evt.currentTarget.style.backgroundColor = '#fff4df';
 }
 
 function answerButtonMouseOut(evt) {
-    evt.currentTarget.style.backgroundColor = '#dbdfd9';
+    evt.currentTarget.style.backgroundColor = '#f8e8b5';
 }
 
 function incrementScore() {
@@ -214,7 +233,7 @@ function continueButtonMouseOut(evt) {
 function continueButtonClick() {
     hideContinueButton();
     answerButton.forEach(element => {
-        element.style.backgroundColor = "#dbdfd9";
+        element.style.backgroundColor = "#f8e8b5";
         addAnswerButtonEventListeners(element);
     })
     pickRandomFlag();

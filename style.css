@@ -1,8 +1,8 @@
 :root {
     --colour1: #ffcc5d;
-    --colour2: #dbdfd9;
+    --colour2: #f8e8b5;
     --colour3: #fff130;
-    --colour4: #eaeee8;
+    --colour4: #fff4df;
 }
 
 body {
@@ -15,7 +15,6 @@ body {
     margin: auto;
     padding: 15px;
     border-radius: 15px;
-    margin-top: 10%;
     box-shadow: 1px 1px 2px #0000009d
 }
 
